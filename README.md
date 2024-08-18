@@ -103,19 +103,27 @@ Expo Go 앱을 사용하면 별도의 빌드 없이도 모바일 기기에서 �
 
    ```
 
+<img src="https://github.com/user-attachments/assets/5212febd-ad2f-4d5a-94df-a22d3234d5cc" alt="push notification" width="400" height="auto">
+
+
 3. Push Notification 푸시 알림
    `expo-notifications` 라이브러리를 활용하여 구현하였다.
    먼저, 루트 페이지에서 expo-notifications 의 `requestForegroundPermissionsAsync` 함수를 이용해 알림 권한을 요청한다.
    `scheduleNotificationAsync` 를 이용해 홈 화면에 있는 '푸시 알림 전송' 을 터치하면 푸시 알림이 나타나게 하였고, 해당 푸시 알림을 터치하면 설정한 앱 내 페이지로 이동한다.
    firebase 와 연동하여 푸시 알림이 발생하게 하는 작업은 아직 테스트 진행 중이다.
+   
+   <img src="https://github.com/user-attachments/assets/33bc3454-3119-46a3-a646-812c9732e4bd" alt="push notification" width="400" height="auto">
 
 
-4. 현 위치 날씨 정보 조회
+5. 현 위치 날씨 정보 조회
    api.openweathermap.org 에서 제공하는 OPEN API 조회 시 expo-location 의 getCurrentPositionAsync 메소드를 이용해 받아온 현 위치의 위도/경도를 parameter 에 담아 날씨 정보를 조회한다.
    simulator 에서 실행 시 위도/경도를 잘못 잡는 경우가 있어서 우리나라의 경도값을 벗어나면 longitude 를 남산타워 위치 경도로 세팅하도록 하였다.
    날씨 아이콘은 날씨의 코드 값으로 구분하여 설정해주었다.
 
-5. 환율 정보 조회
+   <img src="https://github.com/user-attachments/assets/43047d26-6e8a-4299-8b92-a4e5ed5753c1" alt="push notification" width="400" height="auto">
+
+
+7. 환율 정보 조회
    한국수출입은행 OPEN API 를 이용해 현재 달러와 유로 정보를 표기.
    환율 정보를 호출할 때 호출한 시점이 주말이나 평일 오전 11시 이전인 경우 환율 정보를 불러올 수 없기 때문에 주말인 경우 주말 이전 금요일 기준으로 정보를 호출한다.
    평일 오전 11시 이전인 경우 전 날의 환율 정보를 가져온다.
